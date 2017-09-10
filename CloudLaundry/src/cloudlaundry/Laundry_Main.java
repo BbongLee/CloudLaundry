@@ -31,9 +31,7 @@ class Human extends GameObject{
 
 class Cloud extends GameObject{
 	Cloud[] cd = new Cloud[cloudNum];//备抚 荐父怒 按眉 积己
-	for(int i=0; i<cd.length;i++) {
-		cd[i].
-	}
+	
 	public static void makeCloud() {
 		System.out.println("备福固积己!!");
 		
