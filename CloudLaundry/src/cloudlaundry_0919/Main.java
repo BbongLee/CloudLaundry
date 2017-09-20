@@ -1,4 +1,4 @@
-package cloudlaundry;
+package cloudlaundry_0919;
 
 public class Main {
 	public static final int SCREEN_WIDTH = 1000;
