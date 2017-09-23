@@ -1,16 +1,24 @@
 package cloudlaundry;
 
+import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 class StartGame extends JFrame{
-	private ImageIcon cloudClean = new ImageIcon(Main.class.getResource("../image/cloudClean.png")); 
+	//private Image background = new ImageIcon(Main.class.getResource("../image/GameBG.png")).getImage();
+	private JPanel leftJP; //구름있는 패널
+	private JPanel rightJP; //설명(?)있는 패널
 	
+	private ImageIcon cloudClean = new ImageIcon(Main.class.getResource("../image/cloudClean.png")); 
 	private ImageIcon cloudDirtyBasic = new ImageIcon(Main.class.getResource("../image/cloudDirtyBasic.png")); 
 	private ImageIcon cloudDirtyEntered = new ImageIcon(Main.class.getResource("../image/cloudDirtyEntered.png"));
 	
@@ -21,11 +29,24 @@ class StartGame extends JFrame{
 	
 	private JButton cloudDirty= new JButton(cloudDirtyBasic);
 	private JButton Bubble = new JButton(cloudBubble1); 
-	
+
 	static int bubble = 1;
 	
 	public StartGame(){
-		
+		setUndecorated(true);  //기본 메뉴바 안보임
+		setTitle("구름세탁중 . . .");
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true); // 화면에 보이게 해줌
+		setBackground(new Color(0, 0, 0, 0));  //배경은 하얀색
+		setLayout(null); 
+		//left JPanel
+	//	leftJP.setBounds(25,25,630,630);
+//		leftJP.setLayout(null);
+//
+		//구름방 배열 만들기
 		cloudDirty.setBounds(50,0,1000,1000);
 		cloudDirty.setBorderPainted(false);
 		cloudDirty.setContentAreaFilled(false);
@@ -46,16 +67,29 @@ class StartGame extends JFrame{
 			public void mousePressed(MouseEvent e){
 				bubble++;
 				switch(bubble){
-				case 1: Bubble.setIcon(cloudBubble1); break;
-				case 2: Bubble.setIcon(cloudBubble2); break;
-				case 3: Bubble.setIcon(cloudBubble3); break;
-				case 4: Bubble.setIcon(cloudBubble4); break;
+				case 1: 
+					Bubble.setIcon(cloudBubble1); 
+					//구름 색 추가
+					break;
+				case 2: 
+					Bubble.setIcon(cloudBubble2); 
+					break;
+				case 3: 
+					Bubble.setIcon(cloudBubble3); 
+					break;
+				case 4: 
+					Bubble.setIcon(cloudBubble4); 
+					break;
 				}
 				if(bubble>=5){
 					bubble = 0;
 				}
 			}
 		});
-		add(cloudDirty);
+//		//leftJP.add(cloudDirty);
+//		//add(leftJP);
+//		//Right JPanel
+		setVisible(true);
+
 	}
 }

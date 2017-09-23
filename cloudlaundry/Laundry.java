@@ -14,8 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import cloudlaundry_0922.Main;
-
 class Laundry extends JFrame {
 	private Image screenImage;
 	private Graphics screenGraphic;
@@ -103,8 +101,8 @@ class Laundry extends JFrame {
 				startButton.setVisible(false);
 				HowToButton.setVisible(false);
 				quitButton.setVisible(false);  //버튼들 화면에 X 
-				StartGame startgame = new StartGame();//게임시작 페이지로 전환 
-				background = new ImageIcon(Main.class.getResource("../image/mainBackground.png")).getImage();
+				StartGame sg = new StartGame();//게임시작 페이지로 전환 
+				background = new ImageIcon(Main.class.getResource("../image/GameBG.png")).getImage();
 				// mianBackground 배경화면
 			}
 		});
@@ -236,4 +234,3 @@ class Laundry extends JFrame {
 		this.repaint();
 	}
 }
-
