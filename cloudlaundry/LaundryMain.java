@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import cloudlaundry_0922.Main;
 
 public class LaundryMain extends JPanel{
 	private Image screenImage;

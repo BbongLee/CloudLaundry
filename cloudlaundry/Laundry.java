@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import cloudlaundry_0922.Main;
 
 class Laundry extends JFrame {  //메인 레이아웃 (메뉴바 , 이동)
 	private Image screenImage;
@@ -152,4 +151,3 @@ class Laundry extends JFrame {  //메인 레이아웃 (메뉴바 , 이동)
         cards.last(this.getContentPane());
     }
 }
-
