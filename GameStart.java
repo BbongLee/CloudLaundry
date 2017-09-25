@@ -29,39 +29,22 @@ public class GameStart extends JFrame{
 
 	JPanel leftJP = new JPanel();     //구름있는 패널
 	JPanel rightJP = new JPanel();   //타임, 스코어, 네임, 메세지 패널
-	ImageIcon str[] = new ImageIcon[5];
-	public void insertCloudImage(){
-		for(int i=0; i<5; i++) {
-			str[i] = new ImageIcon(Main.class.getResource("../image/CloudClean"+(i+1)+".png"));
-		}
-	}
-	//JLabel cloud = new JLabel(str1);
-	JLabel clouds[] = new JLabel[20];
-	public void insertCloudLabel(){
-		//clouds[0] = new JLabel(str[0]);
-		//랜덤 구름 넣어주기
-		for(int i=0; i<20; i++) {
-			clouds[i] = new JLabel(str[(int)(Math.random()*5+1)]);
-		}
-	}
-	private int mouseX, mouseY;
-	int[][] c_location = new int[20][2];  //cloud location : 구름 좌표
 	
-	public void insertXY(){
-		int x = 0;
-		for(int i=0; i<20; i++) {
-			x = 0;
-			switch((int)(i%4)) {
-			case 0:case 4:case 8:case 12:case 16: x=0; break;
-			case 1:case 5:case 9:case 13:case 17: x=1; break;
-			case 2:case 6:case 10:case 14:case 18: x=2; break;
-			case 3:case 7:case 11:case 15:case 19: x=3;  break;
-			default: System.out.println("좌표생성 에러!"); break;
-			}
-			c_location[i][0] = x * 160;
-			c_location[i][1] = (i / 4) * 125;
-		}
-	}
+	//구름오염도에 따른 구름!
+	ImageIcon str0 = new ImageIcon("CloudClean0.png");
+	ImageIcon str1 = new ImageIcon("CloudClean1.png");
+	ImageIcon str2 = new ImageIcon("CloudClean2.png");
+	ImageIcon str3 = new ImageIcon("CloudClean3.png");
+	ImageIcon str4 = new ImageIcon("CloudClean4.png");
+	//구름 칸 
+	JLabel cloud0 = new JLabel(str0); JLabel cloud1 = new JLabel(str3); JLabel cloud2 = new JLabel(str0); JLabel cloud3 = new JLabel(str4);
+	JLabel cloud4 = new JLabel(str1); JLabel cloud5 = new JLabel(str0); JLabel cloud6 = new JLabel(str3); JLabel cloud7 = new JLabel(str0);	
+	JLabel cloud8 = new JLabel(str0); JLabel cloud9 = new JLabel(str0);	JLabel cloud10 = new JLabel(str1); JLabel cloud11 = new JLabel(str2);
+	JLabel cloud12 = new JLabel(str3); JLabel cloud13 = new JLabel(str4); JLabel cloud14 = new JLabel(str0);	JLabel cloud15 = new JLabel(str4);
+	JLabel cloud16 = new JLabel(str4);	JLabel cloud17 = new JLabel(str0);	JLabel cloud18 = new JLabel(str1);	JLabel cloud19 = new JLabel(str0);
+	
+	private int mouseX, mouseY;
+
 	public GameStart(){
 		setUndecorated(true);  //기본 메뉴바 안보임
 		setResizable(false);
@@ -124,17 +107,21 @@ public class GameStart extends JFrame{
 			}
 		});
 		add(menuBar);
-		//색깔
-		leftJP.setBackground(Color.BLUE);
-		rightJP.setBackground(Color.RED);
-//		//구름 한개
-//		cloud.setBounds(0,0,160,125);
-//		leftJP.add(cloud);
-		//구름 여러개
-		for(int i=0; i<20; i++) {
-		clouds[i].setBounds(c_location[i][0],c_location[i][1],160,125);
-		leftJP.add(clouds[i]);
-		}
+//		//색깔
+//		leftJP.setBackground(Color.BLUE);
+//		rightJP.setBackground(Color.RED);
+		//구름 한개
+		cloud0.setBounds(0,0,160,125);cloud1.setBounds(160,0,160,125);cloud2.setBounds(320,0,160,125);cloud3.setBounds(480,0,160,125);
+		cloud4.setBounds(0,125,160,125);cloud5.setBounds(160,125,160,125);cloud6.setBounds(320,125,160,125);cloud7.setBounds(480,125,160,125);
+		cloud8.setBounds(0,250,160,125);cloud9.setBounds(160,250,160,125);cloud10.setBounds(320,250,160,125);cloud11.setBounds(480,250,160,125);
+		cloud12.setBounds(0,375,160,125);cloud13.setBounds(160,375,160,125);cloud14.setBounds(320,375,160,125);cloud15.setBounds(480,375,160,125);
+		cloud16.setBounds(0,500,160,125);cloud17.setBounds(160,500,160,125);cloud18.setBounds(320,500,160,125);cloud19.setBounds(480,500,160,125);
+		leftJP.add(cloud0);leftJP.add(cloud1);leftJP.add(cloud2);leftJP.add(cloud3);
+		leftJP.add(cloud4);leftJP.add(cloud5);leftJP.add(cloud6);leftJP.add(cloud7);
+		leftJP.add(cloud8);leftJP.add(cloud9);leftJP.add(cloud10);leftJP.add(cloud11);
+		leftJP.add(cloud12);leftJP.add(cloud13);leftJP.add(cloud14);leftJP.add(cloud15);
+		leftJP.add(cloud16);leftJP.add(cloud17);leftJP.add(cloud18);leftJP.add(cloud19);
+
 		leftJP.setVisible(true);
 		add(leftJP);
 		
