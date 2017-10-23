@@ -56,7 +56,7 @@ class Cloud extends GameObject{
 		pollut = (int)(Math.random()*3)+2;
 		x = (int)(Math.random()*506);
 		y = 0;
-		speed = (int)(Math.random()*20);
+		speed = (int)(Math.random()*20)+10;
 	}
 	
 	public int getX() {
@@ -197,11 +197,13 @@ public class GameStart extends JFrame{
 			butCloud[i].setBounds(cloud[i].getX(), cloud[i].getY(), 160, 124);
 			leftJP.add(butCloud[i]);
 			System.out.println(i+"번째 구름 생성");
-			Thread.sleep(1000);
+			add(leftJP);
 		}
+		while(true) {
 		for(int i=0; i<cloud.length; i++) {
+			Thread.sleep(1000);
 			System.out.println(i+"스피드"+cloud[i].getSpeed());
-			cloud[i].setY(cloud[i].getSpeed());
+			cloud[i].setY(cloud[i].getY() + cloud[i].getSpeed());
 			butCloud[i].setBounds(cloud[i].getX(), cloud[i].getY(), 160, 124);
 			leftJP.add(butCloud[i]);
 		}
@@ -210,7 +212,7 @@ public class GameStart extends JFrame{
 		add(leftJP);
 		rightJP.setVisible(true);
 		add(rightJP);
-		
+		}
 	}//생성자 메서드
 	
 	public void paint(Graphics g) {
