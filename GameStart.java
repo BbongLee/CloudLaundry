@@ -52,18 +52,13 @@ class Cloud extends GameObject{
 //	iic2 = new ImageIcon("CloudClean2.png");
 //	iic3 = new ImageIcon("CloudClean3.png");
 //	iic4 = new ImageIcon("CloudClean4.png");
-//	
+	public Cloud(){
+		pollut = (int)(Math.random()*3)+2;
+		x = (int)(Math.random()*506);
+		y = 0;
+		speed = (int)(Math.random()*20);
+	}
 	
-//	public void makeCloud() {
-//		pollut = (int)Math.random()*5;
-//		private JButton cloudButton = new JButton(new ImageIcon(cc[pollut]));
-//		x = (int)Math.random()*630;
-//		y = 0;
-//		speed = (int)Math.random()*20;
-//		//온클릭시 pollut--;
-//		//버튼 사이즈, add하기!;
-//	}
-
 	public int getX() {
 		return x;
 	}
@@ -95,10 +90,12 @@ class Cloud extends GameObject{
 	public void setPollut(int pollut) {
 		this.pollut = pollut;
 	}
-}
+}//cloud
+
 public class GameStart extends JFrame{
-	GameObject go;
-	Cloud cloud[] = new Cloud[3];
+	GameObject go = new GameObject();
+	Cloud cloud[] = new Cloud[go.level[go.getLev()]];
+	
 	Image screenImage;
 	Graphics screenGraphic;
 	private int mouseX, mouseY;
@@ -123,7 +120,7 @@ public class GameStart extends JFrame{
 
 
 	
-	public GameStart(){
+	public GameStart() throws InterruptedException{
 		setUndecorated(true);  //기본 메뉴바 안보임
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -188,15 +185,23 @@ public class GameStart extends JFrame{
 //		leftJP.setBackground(Color.BLUE);
 //		rightJP.setBackground(Color.RED);
 		JButton[] butCloud = new JButton[cloud.length];
-
+		
 		for(int i=0; i<cloud.length; i++) {
-			cloud[i].setPollut((int)Math.random()*3+2);
+			cloud[i] = new Cloud();
+			System.out.println(i + "오염도 : "+ cloud[i].getPollut());
 			butCloud[i] = new JButton(new ImageIcon(cloud[i].cimg[cloud[i].getPollut()]));
-			cloud[i].setX((int)Math.random()*630);
-			cloud[i].setY(0);
-			cloud[i].setSpeed((int)Math.random()*20);
-			//온클릭시 pollut--;
-			//버튼 사이즈, add하기!;
+			System.out.println(cloud[i].cimg[cloud[i].getPollut()]);
+//			//온클릭시 pollut--;
+//			//버튼 사이즈, add하기!;
+			System.out.println(i + "x좌표 : "+ cloud[i].getX());
+			butCloud[i].setBounds(cloud[i].getX(), cloud[i].getY(), 160, 124);
+			leftJP.add(butCloud[i]);
+			System.out.println(i+"번째 구름 생성");
+			Thread.sleep(1000);
+		}
+		for(int i=0; i<cloud.length; i++) {
+			System.out.println(i+"스피드"+cloud[i].getSpeed());
+			cloud[i].setY(cloud[i].getSpeed());
 			butCloud[i].setBounds(cloud[i].getX(), cloud[i].getY(), 160, 124);
 			leftJP.add(butCloud[i]);
 		}
@@ -206,7 +211,7 @@ public class GameStart extends JFrame{
 		rightJP.setVisible(true);
 		add(rightJP);
 		
-	}
+	}//생성자 메서드
 	
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -221,7 +226,7 @@ public class GameStart extends JFrame{
 		paintComponents(g); // 고정이미지(메뉴바)
 		this.repaint();
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		new GameStart();
 	}
 }
